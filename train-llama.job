@@ -1,0 +1,11 @@
+#!/bin/bash
+#$ -M kle3@nd.edu
+#$ -m abe
+#$ -pe smp 8
+#$ -q gpu@qa-a100-002
+#$ -l gpu=0
+#$ -N train-llama
+conda activate LLM
+export CUDA_VISIBLE_DEVICES=0,1
+# python train.py --model_name "baseline_llm" --llm_model_name "llama-7b" --llm_frozen "False" --graph_enc "graphcl" --dataset "baseline_generation" --data "PubChem324k" --task "Description" --split "train" --num_epochs 50 --run_name "train-llama"
+python train.py --model_name "molx_llm" --llm_model_name "llama-7b" --llm_frozen "False" --graph_enc "graphcl" --xtokens --dataset "molx_generation" --data "PubChem324k" --task "Description" --split "train" --num_epochs 50 --run_name "train-llama" --checkpoint_path "output/training/molx_generation/PubChem324k/molx_llm_llama-7b_llm_frozenTrue_graphcl_chemberta_5epochs_lr1e-05_pretrain_best_pretrain-llama.pth"

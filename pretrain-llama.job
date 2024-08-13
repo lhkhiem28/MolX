@@ -1,0 +1,10 @@
+#!/bin/bash
+#$ -M kle3@nd.edu
+#$ -m abe
+#$ -pe smp 8
+#$ -q gpu@qa-a100-002
+#$ -l gpu=0
+#$ -N pretrain-llama
+conda activate LLM
+export CUDA_VISIBLE_DEVICES=0,1
+python train.py --model_name "molx_llm" --llm_model_name "llama-7b" --llm_frozen "True" --graph_enc "graphcl" --xtokens --dataset "molx_generation" --data "PubChem324k" --task "Description" --run_name "pretrain-llama"
