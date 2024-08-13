@@ -6,3 +6,4 @@ output/
 wandb/
 
 datasets/
+!source/datasets/
