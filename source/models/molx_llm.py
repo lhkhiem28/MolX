@@ -5,7 +5,7 @@ from torch.cuda.amp import autocast as autocast
 from transformers import AutoConfig
 from transformers import AutoTokenizer
 from transformers import AutoModelForCausalLM, AutoModel
-from source.gnn.gin import GINGraphCL, GINGraphSTM
+from source.models.gnn.gin import GINGraphCL, GINGraphSTM
 from peft import (
     LoraConfig,
     get_peft_model,
@@ -147,7 +147,7 @@ class MolXLLM(torch.nn.Module):
             ).to(model.device)
         if not args.wo_init:
             self.graph_encoder.load_state_dict(
-                torch.load(f'source/gnn/{args.graph_enc}.pth', map_location=torch.device('cpu')), 
+                torch.load(f'source/models/gnn/{args.graph_enc}.pth', map_location=torch.device('cpu')), 
                 strict=False, 
             )
             print(f"Chem{args.graph_enc} Initialization")

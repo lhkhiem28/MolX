@@ -1,1 +1,0 @@
-import smiles_canonicalization
