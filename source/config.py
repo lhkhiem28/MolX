@@ -3,6 +3,7 @@ import argparse
 def parse_args_llm():
     parser = argparse.ArgumentParser(description="MolX-24")
     parser.add_argument("--project", type=str, default="MolX-24")
+    parser.add_argument("--seed", type=int, default=0)
 
     # LLM related
     parser.add_argument("--model_name", type=str, default='baseline_llm')
@@ -12,7 +13,6 @@ def parse_args_llm():
     parser.add_argument("--smiles_enc", type=str, default='chemberta')
     parser.add_argument('--wo_init', action='store_true', default=False)
     parser.add_argument('--cl_init', action='store_true', default=False)
-    parser.add_argument("--seed", type=int, default=0)
 
     # Model Training
     parser.add_argument("--dataset", type=str, default='baseline_generation')
