@@ -40,7 +40,7 @@ def _save_checkpoint(model, optimizer, cur_epoch, args, is_best=False):
     os.makedirs(f'{args.output_dir}/training/{args.dataset}/{args.data}', exist_ok=True)
 
     param_grad_dic = {
-        k: v.requires_grad for (k, v) in model.named_parameters()
+        name: param.requires_grad for (name, param) in model.named_parameters()
     }
     state_dict = model.state_dict()
     for k in list(state_dict.keys()):
