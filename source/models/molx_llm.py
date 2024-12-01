@@ -288,8 +288,8 @@ class MolXLLM(torch.nn.Module):
             outputs = self.model(
                 inputs_embeds=inputs_embeds,
                 attention_mask=attention_mask,
-                return_dict=True,
                 labels=label_input_ids,
+                return_dict=True,
             )
 
         return outputs.loss
